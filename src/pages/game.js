@@ -1,21 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from 'styled-components'
+import Player from "../components/player";
 
 export default function Game() {
 
-    const arr = [];
-    for(let i = 0; i <= 100; i++){
-        arr.push(i);
-    }
-    const abre = "{"
-    const string = "position: absolute;"
-    const fecha = "}"
     return (
         <>
             <GameScreen>
-                <div className="X13 Y10">
-
-                </div>
+                <Player/>
             </GameScreen>
         </>
     );
