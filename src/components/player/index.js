@@ -7,24 +7,30 @@ export default function Player(props){
     const [posY, setPosY] = useState(0);
 
     useEventListener('keydown', (event) => {
-        console.log(event.key);
         if(event.key === 'd'){
-            setPosX(posX+1);
+            setPosX(posX+2.5);
         }
         if(event.key === 'a'){
-            setPosX(posX-1);
+            setPosX(posX-2.5);
         }
         if(event.key === 'w'){
-            setPosY(posY+1);
+            setPosY(posY+5);
         }
         if(event.key === 's'){
-            setPosY(posY-1);
+            setPosY(posY-5);
         }
     });
 
     return(
-        <div className={`X${posX} Y${posY}`}>
-
-        </div>
+        <div
+            style={{
+                position: 'absolute',
+                width: '5%',
+                height: '10%',
+                backgroundColor: 'blue',
+                bottom: `${posY}%`,
+                left: `${posX}%`
+            }}
+        />
     )
 }

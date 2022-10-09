@@ -14,16 +14,10 @@ export default function Game() {
 }
 
 const GameScreen = styled.div`
-    width 600px;
-    height: 500px;
+    width 1440px;
+    height: 720px;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 10vh;
     background-color: red;
     position: relative;
-
-    div{
-        width: 100px;
-        height: 100px;
-        background-color: blue;
-    }
 `;
