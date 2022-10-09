@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Player from "../components/player";
 import Square from "../components/square";
 import Monster from "../components/monster";
+import Target from "../components/target";
 
 export default function Game() {
     let arr = [];
@@ -27,6 +28,7 @@ export default function Game() {
         <>
             <GameScreen>
                 <Player/>
+                <Target/>
                 {arr.map((num, index) => <Square key = {index} X = {num.X} Y = {num.Y}/>)}
                 {randomMonsterSimulation.map((monster, index) => 
                     <Monster 
