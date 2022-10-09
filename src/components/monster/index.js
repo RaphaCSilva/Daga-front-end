@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import MonsterLifeBar from "./monsterLifeBar";
 
 export default function Monster(props){
 
@@ -17,6 +18,10 @@ export default function Monster(props){
         setFirstMovemant(true);
         setPosX(numbergenerator(props.posX));
         setPosY(numbergenerator(props.posY));
+    }
+
+    function lifeToPercent(life){
+        return (100 * life) / props.maxLife
     }
     
     useEffect(() => {
@@ -42,13 +47,14 @@ export default function Monster(props){
             <span 
                 style={{
                     position: 'absolute',
-                    top: '-50%',
+                    top: '-100%',
                     fontWeight: 'bold',
                     color: 'yellow'
                 }}
             >
-                Javali
+                {props.name}
             </span>
+            <MonsterLifeBar life = {props.life} maxLife = {props.maxLife}/>
         </div>
     )
 }
