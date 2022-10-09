@@ -17,14 +17,14 @@ export default function Game() {
         }
     }
 
-    const randomMonsterSimulation = [ { posX: 9, posY: 16}, { posX: 12, posY: 18}, { posX: 15, posY: 19} ]
+    const randomMonsterSimulation = [ { posX: 9, posY: 16, life: 300}, { posX: 12, posY: 18, life: 300}, { posX: 15, posY: 19, life: 300} ]
 
     return (
         <>
             <GameScreen>
                 <Player/>
                 {arr.map((num, index) => <Square key = {index} X = {num.X} Y = {num.Y}/>)}
-                {randomMonsterSimulation.map((monster, index) => <Monster key = {index} posX = {monster.posX} posY = {monster.posY}/>)}
+                {randomMonsterSimulation.map((monster, index) => <Monster key = {index} posX = {monster.posX} posY = {monster.posY} life = {monster.life}/>)}
             </GameScreen>
         </>
     );

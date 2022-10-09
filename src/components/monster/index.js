@@ -10,7 +10,6 @@ export default function Monster(props){
         const max = pos + 1;
         const min = pos -1;
         const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-        console.log(randomNumber);
         return randomNumber;
     }
 
@@ -23,7 +22,7 @@ export default function Monster(props){
     useEffect(() => {
         const interval = setInterval(() => {
             movimentation();
-        }, 2000);
+        }, 5000);
         return () => clearInterval(interval);
     }, [])
 
@@ -34,10 +33,22 @@ export default function Monster(props){
                 width: '2.5%',
                 height: '5%',
                 backgroundColor: 'red',
+                cursor: 'pointer',
                 bottom: `${firstMovement ? ((posY * 5)-5) : (props.posY * 5)-5}%`,
                 left: `${firstMovement ? ((posX * 2.5)-2.5): (props.posX * 2.5)-2.5}%`,
                 transition: 'all 500ms'
             }}
-        />
+        >
+            <span 
+                style={{
+                    position: 'absolute',
+                    top: '-50%',
+                    fontWeight: 'bold',
+                    color: 'yellow'
+                }}
+            >
+                Javali
+            </span>
+        </div>
     )
 }
