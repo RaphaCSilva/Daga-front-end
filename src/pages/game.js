@@ -2,13 +2,13 @@ import React, {useState} from "react";
 import styled from 'styled-components'
 import Player from "../components/player";
 import Square from "../components/square";
+import Monster from "../components/monster";
 
 export default function Game() {
     let arr = [];
     let Y = 20;
     for(let i = 1; i <=40; i++){
         arr.push({X: i, Y});
-        console.log(arr);
         if(i%40 === 0){
          Y--;
          if(Y>=1){
@@ -17,11 +17,14 @@ export default function Game() {
         }
     }
 
+    const randomMonsterSimulation = [ { posX: 9, posY: 16}, { posX: 12, posY: 18}, { posX: 15, posY: 19} ]
+
     return (
         <>
             <GameScreen>
                 <Player/>
                 {arr.map((num, index) => <Square key = {index} X = {num.X} Y = {num.Y}/>)}
+                {randomMonsterSimulation.map((monster, index) => <Monster key = {index} posX = {monster.posX} posY = {monster.posY}/>)}
             </GameScreen>
         </>
     );
