@@ -18,17 +18,23 @@ export default function Game() {
         }
     }
 
+    const [target, setTarget] = useState(undefined);
+
     const randomMonsterSimulation = [ 
-        { name: "Javali", posX: 9, posY: 16, life: 300, maxLife: 300}, 
-        { name: "Javali", posX: 12, posY: 18, life: 300, maxLife: 300}, 
-        { name: "Javali", posX: 15, posY: 19, life: 300, maxLife: 300} 
+        { name: "Jabuti", posX: 9, posY: 16, life: 300, maxLife: 300}, 
+        { name: "Javali", posX: 12, posY: 18, life: 200, maxLife: 300}, 
+        { name: "Passarinho", posX: 15, posY: 19, life: 100, maxLife: 300} 
     ]
+
+    function changeTarget(monster){
+        setTarget(monster);
+    }
 
     return (
         <>
             <GameScreen>
                 <Player/>
-                <Target/>
+                {(target !== undefined) ? <Target name = {target.name} maxLife = {target.maxLife} life = {target.life}/> : ''}
                 {arr.map((num, index) => <Square key = {index} X = {num.X} Y = {num.Y}/>)}
                 {randomMonsterSimulation.map((monster, index) => 
                     <Monster 
@@ -38,6 +44,7 @@ export default function Game() {
                         posY = {monster.posY} 
                         life = {monster.life} 
                         maxLife = {monster.maxLife}
+                        clicked = {changeTarget}
                     />
                 )}
             </GameScreen>

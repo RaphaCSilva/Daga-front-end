@@ -31,8 +31,12 @@ export default function Monster(props){
         return () => clearInterval(interval);
     }, [])
 
+    function sendTarget(){
+        props.clicked(props);
+    }
+
     return(
-        <div
+        <div onClick={sendTarget}
             style={{
                 position: 'absolute',
                 width: '2.5%',

@@ -15,10 +15,14 @@ export default function Target(props){
                     height: '75%',
                     backgroundColor: 'blue'
                 }}/>
-                <span>
-                    Javali
+                <span style={{
+                    position: 'absolute',
+                    top: '5%',
+                    right: '10%'
+                }}>
+                    {props.name}
                 </span>
-                <TargetLifeBar life = {300} maxLife = {450} />
+                <TargetLifeBar life = {props.life} maxLife = {props.maxLife} />
                 
             </TargetBox>
         </>
@@ -30,5 +34,4 @@ const TargetBox = styled.div`
     width: 20%;
     height: 15%;
     background-color: grey;
-
 `
