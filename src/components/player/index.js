@@ -25,8 +25,8 @@ export default function Player(props){
         <div
             style={{
                 position: 'absolute',
-                width: '5%',
-                height: '10%',
+                width: '2.5%',
+                height: '5%',
                 backgroundColor: 'blue',
                 bottom: `${posY}%`,
                 left: `${posX}%`
