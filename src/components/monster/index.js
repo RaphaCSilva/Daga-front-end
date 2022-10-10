@@ -17,7 +17,7 @@ export default function Monster(props){
     function movimentation(){
         setFirstMovemant(true);
         setPosX(numbergenerator(props.posX));
-        setPosY(numbergenerator(props.posY));
+        setPosY(numbergenerator(props.posY));   
     }
 
     function lifeToPercent(life){
@@ -26,13 +26,19 @@ export default function Monster(props){
     
     useEffect(() => {
         const interval = setInterval(() => {
-            movimentation();
+            if(!props.isDead){
+                movimentation();
+            }
         }, 5000);
+        
         return () => clearInterval(interval);
     }, [])
 
     function sendTarget(){
         props.clicked(props);
+        if(props.isDead){
+            console.log('loot');
+        }
     }
 
     return(

@@ -21,9 +21,9 @@ export default function Game() {
     const [target, setTarget] = useState(undefined);
 
     const [randomMonsterSimulation, setRandomMonsterSimulation] = useState([ 
-        { id: 1, name: "Jabuti", posX: 9, posY: 16, life: 300, maxLife: 300}, 
-        { id: 2, name: "Javali", posX: 12, posY: 18, life: 200, maxLife: 300}, 
-        { id: 3, name: "Passarinho", posX: 15, posY: 19, life: 100, maxLife: 300} 
+        { id: 1, name: "Jabuti", posX: 9, posY: 16, life: 300, maxLife: 300, isDead: false, respawn: 4000}, 
+        { id: 2, name: "Javali", posX: 12, posY: 18, life: 200, maxLife: 300, isDead: false, respawn: 5000}, 
+        { id: 3, name: "Passarinho", posX: 15, posY: 19, life: 100, maxLife: 300, isDead: false, respawn: 10000} 
     ]);
 
     function changeTarget(monster){
@@ -33,6 +33,11 @@ export default function Game() {
     function attackMonster(monster, attack){
         const tempMonsters = [...randomMonsterSimulation];
         tempMonsters[monster.index].life -= attack.damage;
+
+        if(tempMonsters[monster.index].life <= 0){
+            tempMonsters[monster.index].isDead = true;
+        }
+
         setRandomMonsterSimulation(tempMonsters);
         setTarget({...target, life: target.life - attack.damage});
     }
@@ -63,6 +68,7 @@ export default function Game() {
                         posY = {monster.posY} 
                         life = {monster.life} 
                         maxLife = {monster.maxLife}
+                        isDead = {monster.isDead}
                         clicked = {changeTarget}
                     />
                 )}
