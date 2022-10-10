@@ -56,7 +56,7 @@ export default function Monster(props){
                     color: 'yellow'
                 }}
             >
-                {props.name}
+                {props.name} 
             </span>
             <MonsterLifeBar life = {props.life} maxLife = {props.maxLife}/>
         </div>

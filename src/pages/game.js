@@ -20,25 +20,44 @@ export default function Game() {
 
     const [target, setTarget] = useState(undefined);
 
-    const randomMonsterSimulation = [ 
-        { name: "Jabuti", posX: 9, posY: 16, life: 300, maxLife: 300}, 
-        { name: "Javali", posX: 12, posY: 18, life: 200, maxLife: 300}, 
-        { name: "Passarinho", posX: 15, posY: 19, life: 100, maxLife: 300} 
-    ]
+    const [randomMonsterSimulation, setRandomMonsterSimulation] = useState([ 
+        { id: 1, name: "Jabuti", posX: 9, posY: 16, life: 300, maxLife: 300}, 
+        { id: 2, name: "Javali", posX: 12, posY: 18, life: 200, maxLife: 300}, 
+        { id: 3, name: "Passarinho", posX: 15, posY: 19, life: 100, maxLife: 300} 
+    ]);
 
     function changeTarget(monster){
         setTarget(monster);
     }
 
+    function attackMonster(monster, attack){
+        const tempMonsters = [...randomMonsterSimulation];
+        tempMonsters[monster.index].life -= attack.damage;
+        setRandomMonsterSimulation(tempMonsters);
+        setTarget({...target, life: target.life - attack.damage});
+    }
+
     return (
         <>
             <GameScreen>
-                <Player/>
-                {(target !== undefined) ? <Target name = {target.name} maxLife = {target.maxLife} life = {target.life}/> : ''}
+                <Player 
+                    target = {target}
+                    attack = {attackMonster}
+                />
+                {(target !== undefined) ? 
+                    <Target 
+                        name = {target.name} 
+                        maxLife = {target.maxLife} 
+                        life = {target.life}
+                    /> 
+                    : ''
+                }
                 {arr.map((num, index) => <Square key = {index} X = {num.X} Y = {num.Y}/>)}
                 {randomMonsterSimulation.map((monster, index) => 
                     <Monster 
-                        key = {index} 
+                        key = {index}
+                        index = {index}
+                        id = {monster.id} 
                         name = {monster.name}
                         posX = {monster.posX} 
                         posY = {monster.posY} 

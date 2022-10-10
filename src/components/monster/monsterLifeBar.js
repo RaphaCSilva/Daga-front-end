@@ -12,6 +12,7 @@ export default function MonsterLifeBar(props){
             margin = '-50% 0' 
             customLabel={`${props.life}hp`} 
             borderRadius="0px"   
+            isLabelVisible = {false}
             completed = {lifeToPercent(props.life)}
         />
     )
