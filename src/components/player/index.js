@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import useEventListener from '@use-it/event-listener';
+import Orc from "./orc";
 
 export default function Player(props){
 
@@ -47,10 +48,11 @@ export default function Player(props){
                 position: 'absolute',
                 width: '2.5%',
                 height: '5%',
-                backgroundColor: 'blue',
                 bottom: `${(posY*5)-5}%`,
                 left: `${(posX*2.5)-2.5}%`
             }}
-        />
+        >
+            <Orc/>
+        </div>
     )
 }
