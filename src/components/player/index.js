@@ -1,24 +1,32 @@
 import React, {useState} from "react";
 import useEventListener from '@use-it/event-listener';
-import Orc from "./orc";
+import OrcDownWalk from "./orc/orcDownWalk";
+import OrcUpWalk from "./orc/orcUpWalk";
+import OrcLeftWalk from "./orc/orcLeftWalk";
+import OrcRightWalk from "./orc/orcRightWalk";
 
 export default function Player(props){
 
     const [posX, setPosX] = useState(1);
     const [posY, setPosY] = useState(1);
+    const [direction, setDirection] = useState('right');
 
     useEventListener('keydown', (event) => {
         if(event.key === 'd'){
             setPosX(posX+1);
+            setDirection('right');
         }
         if(event.key === 'a'){
             setPosX(posX-1);
+            setDirection('left');
         }
         if(event.key === 'w'){
             setPosY(posY+1);
+            setDirection('up');
         }
         if(event.key === 's'){
             setPosY(posY-1);
+            setDirection('down');
         }
         if(event.key === '1'){
           simpleAttack();
@@ -49,10 +57,15 @@ export default function Player(props){
                 width: '2.5%',
                 height: '5%',
                 bottom: `${(posY*5)-5}%`,
-                left: `${(posX*2.5)-2.5}%`
+                left: `${(posX*2.5)-2.5}%`,
+                transition: 'all 500ms'
             }}
         >
-            <Orc/>
+            {(direction === 'right')? <OrcRightWalk/> : 
+                (direction === 'left')? <OrcLeftWalk/> :
+                    (direction === 'up')? <OrcUpWalk/> : 
+                        (direction === 'down')? <OrcDownWalk/> : ''
+            }
         </div>
     )
 }

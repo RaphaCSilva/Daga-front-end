@@ -2,3 +2,10 @@
     position: absolute;
     right: 10%;
 }
+
+.spriteClass {
+    width: 72px;
+    height: 72px;
+    position: absolute;
+    bottom: 3px;
+}
